@@ -1,0 +1,78 @@
+{
+  "name": "queuep-redis",
+  "version": "0.0.1",
+  "description": "Redis based storage strategy for queuep",
+  "main": "dist/index.js",
+  "author": "pubudud",
+  "license": "MIT",
+  "keywords": [
+    "congestion",
+    "performance",
+    "queue",
+    "qp",
+    "congestion-control",
+    "load-control",
+    "smart-queue",
+    "keep-alive",
+    "framework",
+    "priority",
+    "promise",
+    "callback",
+    "async",
+    "distinct-processing",
+    "ignore-duplicates",
+    "flow-control",
+    "redis",
+    "storage"
+  ],
+  "url": "https://github.com/pupudu/queuep-redis/issues",
+  "email": "pubudu.dodan@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pupudu/queuep-redis"
+  },
+  "scripts": {
+    "start": "gulp babel && node dist/index.js",
+    "pre-push-dependencies": "npm install",
+    "eslint": "eslint 'src/**/*.js'",
+    "eslint-fix": "eslint 'src/**/*.js' --fix",
+    "git-uncommited-changes": "git diff --quiet --cached",
+    "git-unstaged-changes": "git diff --quiet",
+    "git-branch": "bash git-hooks/branch.sh",
+    "lint-staged": "lint-staged"
+  },
+  "dependencies": {
+    "redis": "^2.7.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-node6": "^11.0.0",
+    "eslint": "^3.16.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "lint-staged": "^3.3.1",
+    "pre-commit": "^1.2.2",
+    "pre-push": "^0.1.1"
+  },
+  "pre-push": [
+    "eslint",
+    "git-unstaged-changes",
+    "git-uncommited-changes",
+    "git-branch",
+    "test"
+  ],
+  "pre-commit": [
+    "git-branch",
+    "lint-staged"
+  ],
+  "lint-staged": {
+    "src/**/*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "tests/**/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
