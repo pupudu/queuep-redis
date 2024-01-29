@@ -1,2 +1,2 @@
-*.json5 linguist-generated=true merge=ours
+*.txt -merge -text
 
