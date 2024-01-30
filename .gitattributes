@@ -1,2 +1,2 @@
-*.json merge=ours -text
+*.json merge=theirs -text
 
